@@ -1,5 +1,5 @@
 <h1><%= @todo_list.title %></h1>
-<p>Find me in app/views/todo_items/index.html.erb</p>
+
 
 
 <ul class="todo_items">
@@ -7,3 +7,5 @@
 		<li><%= t.content %></li>
 	<% end %>
 </ul>
+
+<p><%=link_to "New Todo Item",  new_todo_list_todo_item_path  %></p>
