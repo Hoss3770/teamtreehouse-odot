@@ -50,9 +50,19 @@ class TodoItemsController < ApplicationController
     redirect_to todo_list_todo_items_path
 
   end
+
+  def complete
+     @todo_item = @todo_list.todo_items.find(params[:id])
+     @todo_item.update_attribute(:completed_at,Time.now)
+     redirect_to todo_list_todo_items_path, notice: "Todo Item Marked as Complete" #how does rails know
+  end
+
+
   def url_options
     {todo_list_id:params[:todo_list_id]}.merge(super)
   end
+
+
 
   private
   def find_todo_list

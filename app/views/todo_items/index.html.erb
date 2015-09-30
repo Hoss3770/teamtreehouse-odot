@@ -6,9 +6,15 @@
 	<%@todo_list.todo_items.each do |t| %>
 		<tr id="<%=dom_id(t)%>">
 		<td><%= t.content %></td>
-		<td><%= link_to "Edit",edit_todo_list_todo_item_path(t) %>
-		<%= link_to "Destroy",todo_list_todo_item_path(t),method: :delete, 
-		data: {confirm:"Are you sure?"} %></td>
+		<td>
+			<%= link_to "Mark Complete", complete_todo_list_todo_item_path(t), 
+			method: :patch %>
+			<%= link_to "Edit",edit_todo_list_todo_item_path(t) %>
+			<%= link_to "Destroy",todo_list_todo_item_path(t),method: :delete, 
+			data: {confirm:"Are you sure?"} %>
+
+
+		</td>
 		</tr>
 	<% end %>
 </table>
