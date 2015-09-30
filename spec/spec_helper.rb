@@ -19,6 +19,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.include TodoListHelpers, type: :feature
+  config.include RailsDomIdHelper,type: :feature
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

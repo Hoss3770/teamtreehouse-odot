@@ -6,7 +6,7 @@ describe "editing todo_items" do
 	let!(:todo_item){todo_list.todo_items.create(content:"Milk")}
 	
 	it "is successful with valid content" do
-		visit_todo_list(todo_item)
+		visit_todo_list(todo_list)
 		within "#todo_item_#{todo_item.id}" do
 			click_link "Edit"
 		end
@@ -18,7 +18,7 @@ describe "editing todo_items" do
 	end
 
 	it "is unsuccessful with no content" do
-		visit_todo_list(todo_item)
+		visit_todo_list(todo_list)
 		within "#todo_item_#{todo_item.id}" do
 			click_link "Edit"
 		end
@@ -32,7 +32,7 @@ describe "editing todo_items" do
 	end
 
 	it "is unsuccessful with content less than two chars" do
-		visit_todo_list(todo_item)
+		visit_todo_list(todo_list)
 		within "#todo_item_#{todo_item.id}" do
 			click_link "Edit"
 		end
