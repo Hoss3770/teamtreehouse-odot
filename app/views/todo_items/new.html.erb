@@ -1,20 +1,4 @@
-
-
+<h1> <%= @todo_list.title %>-Adding Todo List Item</h1>
 <%= form_for [@todo_list , @todo_item] do |f| %>
-
-	<% if @todo_item.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
-
-	      <ul>
-	      <% @todo_item.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-	<%= f.label :content %>
-	<%= f.text_field :content %>	
-	
-	<%= f.submit "Save" %>
+	<%= render partial: f %>
 <% end %>
