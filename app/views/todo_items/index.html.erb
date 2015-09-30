@@ -4,7 +4,10 @@
 
 <ul class="todo_items">
 	<%@todo_list.todo_items.each do |t| %>
-		<li><%= t.content %></li>
+		<li id="<%=dom_id(t)%>">
+		<%= t.content %>
+		<%= link_to "Edit",edit_todo_list_todo_item_path(t) %>
+		</li>
 	<% end %>
 </ul>
 
