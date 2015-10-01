@@ -3,20 +3,32 @@
 
 
 <table class="todo_items">
-	<%@todo_list.todo_items.each do |t| %>
-		<tr id="<%=dom_id(t)%>">
-		<td><%= t.content %></td>
-		<td>
-			<%= link_to "Mark Complete", complete_todo_list_todo_item_path(t), 
-			method: :patch %>
-			<%= link_to "Edit",edit_todo_list_todo_item_path(t) %>
-			<%= link_to "Destroy",todo_list_todo_item_path(t),method: :delete, 
-			data: {confirm:"Are you sure?"} %>
-
-
-		</td>
+	<thead>
+		<tr>
+			<th width="25%">Completed?</th>
+			<th width="65%">Content</th>
+			<th width="10%">Functions</th>
 		</tr>
-	<% end %>
+	</thead>
+	<tbody>
+		<%@todo_list.todo_items.each do |t| %>
+			<tr id="<%=dom_id(t)%>">
+			<td> <% if t.completed? %>
+					<%= t.completed_at %>
+				<% else %>
+					<%= link_to "Mark Complete", complete_todo_list_todo_item_path(t), 
+					method: :patch %>
+				<% end %>
+				</td>
+			<td><%= t.content %></td>
+			<td>
+					<%= link_to "Edit",edit_todo_list_todo_item_path(t) %>
+					<%= link_to "Destroy",todo_list_todo_item_path(t),method: :delete, 
+					data: {confirm:"Are you sure?"} %>
+			</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <p><%=link_to "New Todo Item",  new_todo_list_todo_item_path  %></p>
